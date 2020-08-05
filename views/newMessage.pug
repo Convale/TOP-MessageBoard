@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= title
+  
+    div(style='margin-left:20px;margin-top:20px')
+
+  h4 Messages
+  
+  dl
+    each message in displayMessages
+      dt 
+        a #{message.text}
+      dd Posted by #{message.user} on #{message.added_formatted}
+
+  h4 Post new message
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='messageUser') Name: 
+      input#user.form-control(type='text' name='messageUser' required='true' )
+    div.form-group
+      label(for='messageText') Message: 
+      input#message.form-control(type='text' name='messageText' required='true' )
+    button.btn.btn-primary(type='submit') Submit

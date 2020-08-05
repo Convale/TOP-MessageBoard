@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  
+    div(style='margin-left:20px;margin-top:20px')
+
+  h4 Messages
+  
+  dl
+    each message in displayMessages
+      dt 
+        a #{message.text}
+      dd Posted by #{message.user} on #{message.added_formatted}
+  
+  hr
+  p
+    a.link-button#add-message(href="/new") Add New Message
