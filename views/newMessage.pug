@@ -1,25 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  
-    div(style='margin-left:20px;margin-top:20px')
+  h1(class="pageTitle") Wonderful Message Board
 
-  h4 Messages
-  
-  dl
-    each message in displayMessages
-      dt 
-        a #{message.text}
-      dd Posted by #{message.user} on #{message.added_formatted}
+  div.pageTitle
+    h3 Post a new message!
 
-  h4 Post new message
-
-  form(method='POST' action='')
-    div.form-group
-      label(for='messageUser') Name: 
-      input#user.form-control(type='text' name='messageUser' required='true' )
-    div.form-group
-      label(for='messageText') Message: 
-      input#message.form-control(type='text' name='messageText' required='true' )
-    button.btn.btn-primary(type='submit') Submit
+  div.newMessageFormContainer
+    form.newMessageForm(method='POST' action='')
+      div
+        label(for='messageTitle') Title: 
+        input(type='text' name='messageTitle' style="margin: 5px 0 15px 0")
+      div
+        label(for='messageText') Message: 
+        textarea(name='messageText' required='true' rows="10" style="margin: 5px 0 0 0;width:100%")
+      input(type='hidden' name='messageUser' value=user)
+      button.newMessageFormButton(type='submit') Submit

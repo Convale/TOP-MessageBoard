@@ -1,18 +1,20 @@
 extends layout
 
 block content
-  h1= title
+  h1.pageTitle Wonderful Message Board
   
-    div(style='margin-left:20px;margin-top:20px')
-
-  h4 Messages
-  
-  dl
+  dl.messages
     each message in displayMessages
-      dt 
-        a #{message.text}
-      dd Posted by #{message.user} on #{message.added_formatted}
-  
-  hr
-  p
-    a.link-button#add-message(href="/new") Add New Message
+      div.messageContainer
+        p.messageTitle #{message.title}
+          dt #{message.text}
+        div.messageBottomBanner
+          if user
+            dd Posted by #{message.user} on #{message.timestampFormatted}
+            if user.accesslevel >= 5000
+              dd
+                form(method='POST' action=`/${message._id}/deleteMessage`)
+                  input(type='hidden' value=message._id name='messageId')
+                  button.messageDeleteButton Delete
+          else
+            dd Posted on #{message.timestampFormatted}

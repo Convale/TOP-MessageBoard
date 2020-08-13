@@ -1,7 +1,23 @@
 doctype html
 html(lang='en')
   head
-    title= title
+    title Wonderful Message Board
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    nav
+      ul
+        li(style="margin-left:50px")
+          a(href="/") Home
+        if (user)
+          li
+            a(href="/newMessage") Post Message
+        if (user)
+          li(style="float:right;margin-right:50px")
+            a(href="/logout") Log out
+        else
+          li(style="float:right;margin-right:50px")
+            a(href="/login") Log in
+          li(style="float:right")
+            a(href="/register") Sign Up
+            
     block content

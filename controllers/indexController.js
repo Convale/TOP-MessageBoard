@@ -1,48 +1,32 @@
-/* eslint-disable func-names */
-const moment = require("moment");
-
-// Preloaded messages
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date(),
-    added_formatted: moment(new Date()).format("MMMM Do YYYY, h:mm:ss a"),
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date(),
-    added_formatted: moment(new Date()).format("MMMM Do YYYY, h:mm:ss a"),
-  },
-];
+const passport = require("passport");
+const messageModel = require("../models/message");
 
 // GET main page
-exports.index = function (req, res) {
-  res.render("index", {
-    title: "Wonderful Messge Board",
-    displayMessages: messages,
-  });
+exports.index = (req, res) => {
+  messageModel
+    .find({})
+    .sort("-timestamp")
+    .exec((err, messageData) => {
+      res.render("index", {
+        displayMessages: messageData,
+        user: req.user,
+      });
+    });
 };
 
-// GET new page
-exports.new_get = function (req, res) {
-  res.render("newMessage", {
-    title: "Wonderful Messge Board",
-    displayMessages: messages,
-  });
+// GET login page
+exports.login_get = (req, res) => {
+  res.render("login");
 };
 
-// POST new page
-exports.new_post = function (req, res) {
-  const { messageText, messageUser } = req.body;
+// POST login page
+exports.login_post = passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/",
+});
 
-  messages.push({
-    text: messageText,
-    user: messageUser,
-    added: new Date(),
-    added_formatted: moment(new Date()).format("MMMM Do YYYY, h:mm:ss a"),
-  });
-
+// GET logout
+exports.logout_get = (req, res) => {
+  req.logout();
   res.redirect("/");
 };

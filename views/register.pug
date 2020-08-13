@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1(class="pageTitle") User Registration
+
+  div.pageTitle
+    h3 Register for a New Account
+
+  div.registerFormContainer
+    form.registerForm(method='POST' action='')
+        div
+            label(for='userFirstName') First Name
+            input(type='text' name='userFirstName' required='true' style="margin: 5px 0 15px 0")
+        div
+            label(for='userLastName') Last Name
+            input(type='text' name='userLastName' required='true' style="margin: 5px 0 15px 0")
+        div
+            label(for='userEmail') Email
+            input(type='text' name='userEmail' required='true' style="margin: 5px 0 15px 0")
+        div
+            label(for='userPass') Password
+            input(type='password' name='userPass' required='true' style="margin: 5px 0 15px 0")
+        div
+            label(for='userPass2') Confirm Password
+            input(type='password' name='userPass2' required='true' style="margin: 5px 0 0 0")
+        div
+            input(type='hidden' name='userAccess' value='1001' )
+        button.registerFormButton(type='submit') Register

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1(class="pageTitle") Wonderful Message Board
+
+  div.pageTitle
+    h3 Sign In
+
+  div.loginFormContainer
+    form.loginForm(method='POST' action='')
+      div
+        label(for='username') Email
+        input(type='text' name='username' required='true' style="margin: 5px 0 15px 0")
+      div
+        label(for='password') Password
+        input(type='password' name='password' required='true' style="margin: 5px 0 0 0")
+      button.loginFormButton(type='submit') Login
