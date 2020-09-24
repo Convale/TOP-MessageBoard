@@ -10,11 +10,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-<img src="public/images/readme_icon.png" alt="Logo" width="80" height="80">
+<img src="public/images/readme_icon.jpg" alt="Logo" width="80" height="80">
   <h3 align="center">TOP - Message Board</h3>
 
   <p align="center"> 
-A simple, effective, and easy to use website template with user login/authentication.
+A clean and easy message board. Some info stays secret unless you're a user!
     <br />
     <br />
     <a href="https://powerful-ravine-05616.herokuapp.com/">View Demo</a>
